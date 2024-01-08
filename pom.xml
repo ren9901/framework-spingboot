@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <!-- Spring Boot 的版本号切换成 2.6 版本 -->
+    <version>2.6.3</version>
+    <relativePath/> <!-- lookup parent from repository -->
+  </parent>
+
+  <groupId>com.framework</groupId>
+  <artifactId>framework-springboot</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <name>framework</name>
+  <!-- 项目描述 -->
+  <description>后台管理系统框架</description>
+
+  <!-- 多模块项目父工程打包模式必须指定为 pom -->
+  <packaging>pom</packaging>
+
+  <!-- 子模块管理 -->
+  <modules>
+
+  </modules>
+
+  <!-- 版本号统一管理 -->
+  <properties>
+    <!-- 项目版本号 -->
+    <revision>0.0.1-SNAPSHOT</revision>
+    <java.version>1.8</java.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <!-- Maven 相关 -->
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+
+  </properties>
+
+  <!-- 统一依赖管理 -->
+  <dependencyManagement>
+
+  </dependencyManagement>
+
+  <build>
+    <!-- 统一插件管理 -->
+    <pluginManagement>
+
+    </pluginManagement>
+  </build>
+
+  <!-- 使用阿里云的 Maven 仓库源，提升包下载速度 -->
+  <repositories>
+    <repository>
+      <id>aliyunmaven</id>
+      <name>aliyun</name>
+      <url>https://maven.aliyun.com/repository/public</url>
+    </repository>
+  </repositories>
+
+</project>
