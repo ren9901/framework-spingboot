@@ -13,7 +13,7 @@
 
   <groupId>com.framework</groupId>
   <artifactId>framework-springboot</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>${revision}</version>
   <name>framework</name>
   <!-- 项目描述 -->
   <description>后台管理系统框架</description>
@@ -23,7 +23,8 @@
 
   <!-- 子模块管理 -->
   <modules>
-
+    <module>framework-admin</module>
+    <module>framework-common</module>
   </modules>
 
   <!-- 版本号统一管理 -->
@@ -37,11 +38,75 @@
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
 
+    <!-- 依赖包版本 -->
+    <lombok.version>1.18.28</lombok.version>
+    <guava.version>31.1-jre</guava.version>
+    <commons-lang3.version>3.12.0</commons-lang3.version>
+    <jackson.version>2.15.2</jackson.version>
+    <knife4j.version>4.3.0</knife4j.version>
+    <mybatis-plus.version>3.5.2</mybatis-plus.version>
+    <p6spy.version>3.9.1</p6spy.version>
+
   </properties>
 
   <!-- 统一依赖管理 -->
   <dependencyManagement>
+    <dependencies>
 
+      <dependency>
+        <groupId>com.framework</groupId>
+        <artifactId>framework-common</artifactId>
+        <version>${revision}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.framework</groupId>
+        <artifactId>framework-admin</artifactId>
+        <version>${revision}</version>
+      </dependency>
+
+
+      <dependency>
+        <groupId>p6spy</groupId>
+        <artifactId>p6spy</artifactId>
+        <version>${p6spy.version}</version>
+      </dependency>
+
+      <!-- Mybatis Plus -->
+      <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-boot-starter</artifactId>
+        <version>${mybatis-plus.version}</version>
+      </dependency>
+
+      <!-- knife4j（API 文档工具） -->
+      <dependency>
+        <groupId>com.github.xiaoymin</groupId>
+        <artifactId>knife4j-openapi2-spring-boot-starter</artifactId>
+        <version>${knife4j.version}</version>
+      </dependency>
+
+      <!-- Jackson -->
+      <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>${jackson.version}</version>
+      </dependency>
+
+      <!-- 常用工具库 -->
+      <dependency>
+        <groupId>com.google.guava</groupId>
+        <artifactId>guava</artifactId>
+        <version>${guava.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+        <version>${commons-lang3.version}</version>
+      </dependency>
+
+    </dependencies>
   </dependencyManagement>
 
   <build>
