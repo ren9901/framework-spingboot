@@ -8,7 +8,7 @@ jwt:
   # 秘钥
   secret: 94FhabFstKY/NpvI6E/ZkkFAJSBneVRBWQm7y1v7ZjNTK0ihZan183GTOMmBDEvGe8vu/Us4/jqLMGHO16L9AQ==
   # token 过期时间（单位：分钟） 24*60
-  tokenExpireTime: 1440
+  tokenExpireTime: 60
   # token 请求头中的 key 值
   tokenHeaderKey: Authorization
   # token 请求头中的 value 值前缀
