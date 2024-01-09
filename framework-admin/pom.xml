@@ -18,7 +18,18 @@
     <dependencies>
         <dependency>
             <groupId>com.framework</groupId>
+            <artifactId>framework-jwt</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.framework</groupId>
             <artifactId>framework-common</artifactId>
+        </dependency>
+
+        <!-- Spring Security -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
         <!-- knife4j -->
@@ -58,7 +69,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-
         </plugins>
     </build>
 </project>
