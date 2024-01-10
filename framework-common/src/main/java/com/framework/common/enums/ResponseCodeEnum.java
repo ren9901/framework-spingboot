@@ -33,6 +33,12 @@ public enum ResponseCodeEnum implements BaseExceptionInterface {
     ARTICLE_NOT_FOUND("20010", "该文章不存在！"),
     CATEGORY_CAN_NOT_DELETE("20011", "该分类下包含文章，请先删除对应文章，才能删除！"),
     TAG_CAN_NOT_DELETE("20012", "该标签下包含文章，请先删除对应文章，才能删除！"),
+
+
+    // ----------- 用户模块异常状态码 -----------
+    USER_NAME_IS_EXISTED("300001","该用户已存在，请勿重复添加！"),
+    USER_NAME_NOT_EXISTED("300002","用户不存在！")
+
     ;
 
     // 异常码
