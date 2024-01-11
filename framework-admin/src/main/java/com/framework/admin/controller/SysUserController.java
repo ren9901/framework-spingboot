@@ -1,6 +1,6 @@
 package com.framework.admin.controller;
 
-import com.framework.common.model.vo.sysuer.*;
+import com.framework.common.model.vo.sysUer.*;
 import com.framework.common.aspect.ApiOperationLog;
 import com.framework.common.domain.service.ISysUserService;
 import com.framework.common.utils.Response;

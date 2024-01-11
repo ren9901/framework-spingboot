@@ -5,8 +5,8 @@ import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.framework.common.domain.entity.SysUser;
-import com.framework.common.model.vo.sysuer.FindUserPageListReqVo;
-import com.framework.common.model.vo.sysuer.UpdateUserReqVo;
+import com.framework.common.model.vo.sysUer.FindUserPageListReqVo;
+import com.framework.common.model.vo.sysUer.UpdateUserReqVo;
 import org.apache.ibatis.annotations.Param;
 
 import java.time.LocalDateTime;

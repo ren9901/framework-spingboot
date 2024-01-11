@@ -18,7 +18,7 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@ApiModel(value = "添加用户VO")
+@ApiModel(value = "修改用户VO")
 public class UpdateUserReqVo {
 
     /**

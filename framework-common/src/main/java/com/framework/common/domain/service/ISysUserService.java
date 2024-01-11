@@ -2,7 +2,7 @@ package com.framework.common.domain.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.framework.common.domain.entity.SysUser;
-import com.framework.common.model.vo.sysuer.*;
+import com.framework.common.model.vo.sysUer.*;
 import com.framework.common.utils.Response;
 
 /**

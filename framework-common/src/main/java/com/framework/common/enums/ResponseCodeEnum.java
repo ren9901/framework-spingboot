@@ -37,7 +37,9 @@ public enum ResponseCodeEnum implements BaseExceptionInterface {
 
     // ----------- 用户模块异常状态码 -----------
     USER_NAME_IS_EXISTED("300001","该用户已存在，请勿重复添加！"),
-    USER_NAME_NOT_EXISTED("300002","用户不存在！")
+    USER_NAME_NOT_EXISTED("300002","用户不存在！"),
+    ROLE_NAME_NOT_EXISTED("300003","角色不存在！"),
+    ROLE_NAME_IS_EXISTED("300001","该角色已存在，请勿重复添加！"),
 
     ;
 

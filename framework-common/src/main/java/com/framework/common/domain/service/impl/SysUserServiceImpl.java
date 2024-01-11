@@ -10,7 +10,7 @@ import com.framework.common.domain.mapper.SysUserRoleMapper;
 import com.framework.common.domain.service.ISysUserService;
 import com.framework.common.enums.ResponseCodeEnum;
 import com.framework.common.exception.BizException;
-import com.framework.common.model.vo.sysuer.*;
+import com.framework.common.model.vo.sysUer.*;
 import com.framework.common.utils.PageResponse;
 import com.framework.common.utils.Response;
 import lombok.extern.slf4j.Slf4j;

@@ -2,4 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.framework.common.domain.mapper.SysRoleMapper">
 
+    <select id="selectPageList" resultType="com.framework.common.domain.entity.SysRole">
+        SELECT * FROM sys_role
+        WHERE
+        1 = 1
+        <if test="qo.roleName != null and qo.roleName !=''">
+            and role_name LIKE CONCAT('%', #{qo.roleName, jdbcType=VARCHAR}, '%')
+        </if>
+            and del_flag = '0'
+        ORDER BY role_sort
+    </select>
+
+    <update id="updataSysRole">
+        UPDATE sys_role
+        <set>
+            <if test="roleName != null and roleName != ''">role_name = #{roleName},</if>
+            <if test="roleKey != null and roleKey != ''">role_key = #{roleKey},</if>
+            <if test="roleSort != null">role_sort = #{roleSort},</if>
+            <if test="remark != null">remark = #{remark},</if>
+            update_time = sysdate()
+        </set>
+        WHERE role_id = #{roleId}
+    </update>
+
 </mapper>

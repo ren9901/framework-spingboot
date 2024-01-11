@@ -4,8 +4,9 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
 import java.io.Serializable;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+
+import com.baomidou.mybatisplus.annotation.TableLogic;
+import lombok.*;
 
 /**
  * <p>
@@ -16,6 +17,9 @@ import lombok.EqualsAndHashCode;
  * @since 2024-01-09
  */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @EqualsAndHashCode(callSuper = false)
 public class SysRole implements Serializable {
 
@@ -63,8 +67,9 @@ public class SysRole implements Serializable {
     private String status;
 
     /**
-     * 删除标志（0代表存在 2代表删除）
+     * 删除标志（0代表存在 1代表删除）
      */
+    @TableLogic
     private String delFlag;
 
     /**
@@ -91,6 +96,5 @@ public class SysRole implements Serializable {
      * 备注
      */
     private String remark;
-
 
 }
