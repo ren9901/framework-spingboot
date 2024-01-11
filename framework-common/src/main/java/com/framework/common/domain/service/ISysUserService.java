@@ -2,9 +2,7 @@ package com.framework.common.domain.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.framework.common.domain.entity.SysUser;
-import com.framework.common.model.vo.sysuer.AddUserReqVo;
-import com.framework.common.model.vo.sysuer.FindUserPageListReqVo;
-import com.framework.common.model.vo.sysuer.ViewUserReqVo;
+import com.framework.common.model.vo.sysuer.*;
 import com.framework.common.utils.Response;
 
 /**
@@ -30,20 +28,32 @@ public interface ISysUserService extends IService<SysUser> {
     Response findUserPageList(FindUserPageListReqVo findUserPageListReqVo);
 
     /**
-     * 添加用户
-     * @return
-     */
-    Response addSysUser(AddUserReqVo addUserReqVo);
-
-    /**
      * 查看用户详情
      * @return
      */
     Response viewSysUser(ViewUserReqVo viewUserReqVo);
 
     /**
+     * 添加用户
+     * @return
+     */
+    void addSysUser(AddUserReqVo addUserReqVo);
+
+    /**
      * 删除用户
      * @return
      */
-    Response deleteSysUser(ViewUserReqVo viewUserReqVo);
+    void deleteSysUser(ViewUserReqVo viewUserReqVo);
+
+    /**
+     * 更新用户
+     * @return
+     */
+    void updateSysUser(UpdateUserReqVo updateUserReqVo);
+
+    /**
+     * 更新用户密码
+     * @return
+     */
+    void updatePassword(UpdataPassWordReqVo updataPassWordReqVo);
 }

@@ -10,9 +10,7 @@ import com.framework.common.domain.mapper.SysUserRoleMapper;
 import com.framework.common.domain.service.ISysUserService;
 import com.framework.common.enums.ResponseCodeEnum;
 import com.framework.common.exception.BizException;
-import com.framework.common.model.vo.sysuer.AddUserReqVo;
-import com.framework.common.model.vo.sysuer.FindUserPageListReqVo;
-import com.framework.common.model.vo.sysuer.ViewUserReqVo;
+import com.framework.common.model.vo.sysuer.*;
 import com.framework.common.utils.PageResponse;
 import com.framework.common.utils.Response;
 import lombok.extern.slf4j.Slf4j;
@@ -78,8 +76,25 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
     }
 
     @Override
+    public Response viewSysUser(ViewUserReqVo viewUserReqVo) {
+        Long userId = viewUserReqVo.getUserId();
+
+        SysUser sysUser = userMapper.selectById(userId);
+
+        if(Objects.isNull(sysUser)){
+            throw new BizException(ResponseCodeEnum.USER_NAME_NOT_EXISTED);
+        }
+
+        // todo 查出用户对应的 角色和权限等
+
+        // todo 返回的数据 封装成Rsp Vo
+
+        return Response.success(sysUser);
+    }
+
+    @Override
     @Transactional(rollbackFor = Exception.class)
-    public Response addSysUser(AddUserReqVo addUserReqVo) {
+    public void addSysUser(AddUserReqVo addUserReqVo) {
         String userName = addUserReqVo.getUserName();
         //判断用户是否存在
         Long count = userMapper.selectCount(new QueryWrapper<SysUser>().lambda().eq(SysUser::getUserName, userName));
@@ -100,37 +115,32 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         SysUser sysUser = userMapper.selectOne(new QueryWrapper<SysUser>().lambda().eq(SysUser::getUserName, userName));
         // todo 先默认添加的角色为普通角色 common
         userRoleMapper.insert(SysUserRole.builder().userId(sysUser.getUserId()).roleId(2L).build());
-
-
-        return Response.success();
     }
 
     @Override
-    public Response viewSysUser(ViewUserReqVo viewUserReqVo) {
+    @Transactional(rollbackFor = Exception.class)
+    public void deleteSysUser(ViewUserReqVo viewUserReqVo) {
         Long userId = viewUserReqVo.getUserId();
-
-        SysUser sysUser = userMapper.selectById(userId);
-
-        if(Objects.isNull(sysUser)){
-            throw new BizException(ResponseCodeEnum.USER_NAME_NOT_EXISTED);
-        }
-
-        // todo 查出用户对应的 角色和权限等
-
-        // todo 返回的数据 封装成Rsp Vo
-
-        return Response.success(sysUser);
+        userMapper.deleteById(userId);
     }
 
     @Override
-    public Response deleteSysUser(ViewUserReqVo viewUserReqVo) {
-        Long userId = viewUserReqVo.getUserId();
-        int result = userMapper.deleteById(userId);
-        if(result > 0){
-            return Response.success();
-        }else{
-            return Response.fail();
-        }
+    @Transactional(rollbackFor = Exception.class)
+    public void updateSysUser(UpdateUserReqVo updateUserReqVo) {
+        // todo 后续补充遍历 部门 角色等
+        userMapper.updateSysUser(updateUserReqVo);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void updatePassword(UpdataPassWordReqVo updataPassWordReqVo) {
+        String userName = updataPassWordReqVo.getUserName();
+        String password = updataPassWordReqVo.getPassword();
+
+        // 加密密码
+        String encodePassword = passwordEncoder.encode(password);
+
+        userMapper.updatePasswordByUsername(userName, encodePassword);
     }
 
 }

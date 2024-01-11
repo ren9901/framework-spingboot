@@ -12,4 +12,16 @@
         ORDER BY create_time
     </select>
 
+    <update id="updateSysUser">
+        UPDATE sys_user
+        <set>
+            <if test="nickName != null and nickName != ''">nick_name = #{nickName},</if>
+            <if test="email != null ">email = #{email},</if>
+            <if test="phonenumber != null ">phonenumber = #{phonenumber},</if>
+            <if test="remark != null">remark = #{remark},</if>
+            update_time = sysdate()
+        </set>
+        WHERE user_id = #{userId}
+    </update>
+
 </mapper>

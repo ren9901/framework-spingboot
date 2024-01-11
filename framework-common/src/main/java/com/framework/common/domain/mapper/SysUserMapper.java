@@ -1,11 +1,15 @@
 package com.framework.common.domain.mapper;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.framework.common.domain.entity.SysUser;
 import com.framework.common.model.vo.sysuer.FindUserPageListReqVo;
+import com.framework.common.model.vo.sysuer.UpdateUserReqVo;
 import org.apache.ibatis.annotations.Param;
+
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -23,5 +27,18 @@ public interface SysUserMapper extends BaseMapper<SysUser> {
         return selectOne(queryWrapper);
     }
 
-    Page<SysUser> selectPageList(Page<SysUser> page,@Param("qo") FindUserPageListReqVo findUserPageListReqVo);
+    default void updatePasswordByUsername(String username, String password) {
+        LambdaUpdateWrapper<SysUser> wrapper = new LambdaUpdateWrapper<>();
+        wrapper.set(SysUser::getPassword, password);
+        wrapper.set(SysUser::getUpdateTime, LocalDateTime.now());
+        // 更新条件
+        wrapper.eq(SysUser::getUserName, username);
+
+        update(null, wrapper);
+
+    }
+
+    Page<SysUser> selectPageList(Page<SysUser> page, @Param("qo") FindUserPageListReqVo findUserPageListReqVo);
+
+    void updateSysUser(UpdateUserReqVo updateUserReqVo);
 }

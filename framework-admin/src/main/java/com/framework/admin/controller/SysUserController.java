@@ -1,10 +1,8 @@
 package com.framework.admin.controller;
 
-import com.framework.common.model.vo.sysuer.AddUserReqVo;
-import com.framework.common.model.vo.sysuer.FindUserPageListReqVo;
+import com.framework.common.model.vo.sysuer.*;
 import com.framework.common.aspect.ApiOperationLog;
 import com.framework.common.domain.service.ISysUserService;
-import com.framework.common.model.vo.sysuer.ViewUserReqVo;
 import com.framework.common.utils.Response;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -39,13 +37,6 @@ public class SysUserController {
         return userService.findUserPageList(findUserPageListReqVo);
     }
 
-    @PostMapping("/add")
-    @ApiOperation(value = "添加用户")
-    @ApiOperationLog(description = "添加用户")
-    public Response addSysUser(@RequestBody @Validated AddUserReqVo addUserReqVo){
-        return userService.addSysUser(addUserReqVo);
-    }
-
     @PostMapping("/view")
     @ApiOperation(value = "查看用户")
     @ApiOperationLog(description = "查看用户")
@@ -53,11 +44,37 @@ public class SysUserController {
         return userService.viewSysUser(viewUserReqVo);
     }
 
+    @PostMapping("/add")
+    @ApiOperation(value = "添加用户")
+    @ApiOperationLog(description = "添加用户")
+    public Response addSysUser(@RequestBody @Validated AddUserReqVo addUserReqVo){
+        userService.addSysUser(addUserReqVo);
+        return Response.success();
+    }
+
     @PostMapping("/delete")
     @ApiOperation(value = "删除用户")
     @ApiOperationLog(description = "删除用户")
-    private Response deleteSysUser(@RequestBody @Validated ViewUserReqVo viewUserReqVo){
-        return userService.deleteSysUser(viewUserReqVo);
+    public Response deleteSysUser(@RequestBody @Validated ViewUserReqVo viewUserReqVo){
+        userService.deleteSysUser(viewUserReqVo);
+        return Response.success();
     }
+
+    @PostMapping("/update")
+    @ApiOperation(value = "更新用户")
+    @ApiOperationLog(description = "更新用户")
+    public Response updateSysUser(@RequestBody @Validated UpdateUserReqVo updateUserReqVo){
+        userService.updateSysUser(updateUserReqVo);
+        return Response.success();
+    }
+
+    @PostMapping("/updatePassword")
+    @ApiOperation(value = "修改用户密码")
+    @ApiOperationLog(description = "修改用户密码")
+    public Response updatePassword(@RequestBody @Validated UpdataPassWordReqVo updataPassWordReqVo){
+        userService.updatePassword(updataPassWordReqVo);
+        return Response.success();
+    }
+
 
 }
