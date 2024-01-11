@@ -1,7 +1,6 @@
-package com.framework.common.model.vo.sysuer;
+package com.framework.common.model.vo.sysUer;
 
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

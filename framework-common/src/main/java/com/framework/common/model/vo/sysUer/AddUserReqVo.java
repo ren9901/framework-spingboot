@@ -1,4 +1,4 @@
-package com.framework.common.model.vo.sysuer;
+package com.framework.common.model.vo.sysUer;
 
 import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;

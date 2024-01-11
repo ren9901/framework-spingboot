@@ -1,4 +1,4 @@
-package com.framework.common.model.vo.sysuer;
+package com.framework.common.model.vo.sysUer;
 
 import com.framework.common.model.BasePageQuery;
 import io.swagger.annotations.ApiModel;
